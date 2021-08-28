@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./User.css";
-import { connect } from "react-redux";
 import { AddAction } from "../Action/AddAction";
+import { connect } from "react-redux";
+
 class Forms extends Component {
   constructor(props) {
     super(props);
@@ -14,23 +15,22 @@ class Forms extends Component {
     };
   }
   handleChange = (e) => {
-    {
-      const name = e.target.name;
-      const value = e.target.value;
+    const name = e.target.name;
+    const value = e.target.value;
 
-      this.setState({ [name]: value });
-    }
+    this.setState({ [name]: value });
   };
   handelsubmite = (e) => {
     e.preventDefault();
     this.props.NewUSER(this.state);
     this.setState({
-      username: "",
+      fullname: "",
       email: "",
-      password: "",
+      gen: "",
       contact: "",
     });
   };
+
   render() {
     return (
       <div>
@@ -39,7 +39,7 @@ class Forms extends Component {
           <input
             type="text"
             name="fullname"
-            value={this.state.username}
+            value={this.state.fullname}
             onChange={this.handleChange}
           />
           <br />
@@ -74,8 +74,8 @@ class Forms extends Component {
     );
   }
 }
+
 const mapDispatchToProps = {
   NewUSER: AddAction,
 };
-
 export default connect(null, mapDispatchToProps)(Forms);
