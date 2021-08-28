@@ -35,6 +35,7 @@ class EditUser extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {" "}
         FirstName: <br />
         <input
           name="fullname"
