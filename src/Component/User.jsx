@@ -5,6 +5,7 @@ import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import EditUser from "./EditUser";
 import { deleteUser } from "../Action/AddAction";
+import "./User.css";
 
 const User = ({ users, deleteUser, editUser }) => {
   const [show, setShow] = useState(false);
@@ -29,7 +30,7 @@ const User = ({ users, deleteUser, editUser }) => {
           />
         </Modal.Body>
       </Modal>
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem" }} className="card">
         <h2>Name : {users.fullname}</h2>
         <p>Email : {users.email}</p>
         <p>Gen : {users.gen}</p>
