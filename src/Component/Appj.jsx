@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Forms from "./Forms";
 
-import User from "./User";
+import User from "./Userlist";
 
 class App extends Component {
   constructor(props) {
