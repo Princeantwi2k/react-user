@@ -41,6 +41,7 @@ class Forms extends Component {
             name="fullname"
             value={this.state.fullname}
             onChange={this.handleChange}
+            required
           />
           <br />
           <label htmlFor="password">Email</label>
@@ -49,6 +50,7 @@ class Forms extends Component {
             name="email"
             value={this.state.email}
             onChange={this.handleChange}
+            required
           />
           <br />
           <label htmlFor="Gen">Gen</label>
@@ -57,6 +59,7 @@ class Forms extends Component {
             name="gen"
             value={this.state.gen}
             onChange={this.handleChange}
+            required
           />
 
           <br />
@@ -66,6 +69,7 @@ class Forms extends Component {
             name="contact"
             value={this.state.contact}
             onChange={this.handleChange}
+            required
           />
           <br />
           <button type="submit">Submit </button>
