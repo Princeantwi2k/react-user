@@ -9,7 +9,7 @@ import firebase from '../Firebase/Config'
 const store= createStore(UsersReducers,compose(
     applyMiddleware(thunk.withExtraArgument({getFirebase,getFirestore})),
     reactReduxFirebase(firebase),
-    reduxFirestore(getFirestore)
+    reduxFirestore(firebase)
 ))
 
 
