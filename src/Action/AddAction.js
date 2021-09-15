@@ -3,10 +3,16 @@ export const DELETE_USER ="DELETE_USER"
 export const EDIT_USER ="EDIT_USER"
 
 export const AddAction=(user)=>{
-  return{ 
-     type: ADD_USER,
-    payload:user
-}
+
+  return(dispatch,state,{getFirestore})=>{
+    getFirestore()
+    .collection("User")
+    .add(user)
+    .then((docs)=>{
+      console.log(docs)
+    })
+  }
+
 }
 
 export const deleteUser=(user_id)=>{
