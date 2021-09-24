@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./User.css";
-import { AddAction } from "../Action/AddAction";
+import { AddAction, getALLusers } from "../Action/AddAction";
 import { connect } from "react-redux";
 
 class Forms extends Component {
@@ -13,6 +13,10 @@ class Forms extends Component {
       contact: "",
       gen: "",
     };
+  }
+
+  componentDidMount() {
+    this.props.getALLusers();
   }
   handleChange = (e) => {
     const name = e.target.name;
@@ -81,5 +85,6 @@ class Forms extends Component {
 
 const mapDispatchToProps = {
   NewUSER: AddAction,
+  getALLusers: getALLusers,
 };
 export default connect(null, mapDispatchToProps)(Forms);
