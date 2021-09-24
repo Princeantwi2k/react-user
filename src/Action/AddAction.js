@@ -9,7 +9,7 @@ export const AddAction=(user)=>{
     .collection("User")
     .add(user)
     .then((docs)=>{
-      console.log(docs)
+      console.log(docs) 
     })
   }
 
@@ -26,4 +26,19 @@ export const editUser=(updateUser)=>{
      type: EDIT_USER,
     payload:updateUser
 } 
+}
+
+export const getALLusers=()=>{
+  return(dispatch,state,{getFirestore})=>{
+    getFirestore().collection('User').onSnapshot((snapshot)=>{
+      let users = [];
+      snapshot.forEach((doc)=>{
+        users.push(doc.data())
+      })
+      dispatch({
+        type:'SET_ALL_USERS',
+        payload:users
+      })
+    })
+  }
 }
