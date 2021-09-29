@@ -16,16 +16,16 @@ export const AddAction=(user)=>{
 }
 
 export const deleteUser=(user_id)=>{
-  return{ 
-     type: DELETE_USER,
-    payload:user_id
-} 
+ 
+return(dispatch,state,{getFirestore})=>{
+  getFirestore().collection('User').doc(user_id).delete().then(()=>{})
+}
 }
 export const editUser=(updateUser)=>{
-  return{ 
-     type: EDIT_USER,
-    payload:updateUser
-} 
+  return(dispatch,state,{getFirestore})=>{
+    getFirestore().collection('User').doc(updateUser.id).set(updateUser).then(()=>{})
+  }
+
 }
 
 export const getALLusers=()=>{
@@ -33,7 +33,7 @@ export const getALLusers=()=>{
     getFirestore().collection('User').onSnapshot((snapshot)=>{
       let users = [];
       snapshot.forEach((doc)=>{
-        users.push(doc.data())
+        users.push({...doc.data(),id:doc.id})
       })
       dispatch({
         type:'SET_ALL_USERS',
