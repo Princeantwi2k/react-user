@@ -9,7 +9,7 @@ const Userlist = ({ users, deleteUser, editUser }) => {
   return <div>{details}</div>;
 };
 const mapStateToProps = (state) => {
-  return { users: state.users };
+  return { users: state.user.users };
 };
 
 export default connect(mapStateToProps)(Userlist);
