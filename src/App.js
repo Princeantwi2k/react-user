@@ -1,11 +1,12 @@
-import Appj from './Component/Appj';
+
+import Router from './Router/Router';
 
 
 function App() {
   return (
     <div className="App">
       
-      <Appj />
+    <Router />
      
      
     </div>
