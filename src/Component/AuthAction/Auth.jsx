@@ -1,0 +1,38 @@
+export const registration = (email, password) => {
+  return (dispatch, state, { getFirebase }) => {
+    const firebase = getFirebase();
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+};
+
+export const login = (email, password, replace) => {
+  return (dispatch, state, { getFirebase }) => {
+    const firebase = getFirebase();
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        replace("/");
+      });
+  };
+};
+
+export const logout = (replace) => {
+  return (dispatch, state, { getFirebase }) => {
+    const firebase = getFirebase();
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        replace("/login");
+      });
+  };
+};
