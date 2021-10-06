@@ -16,6 +16,7 @@ const User = ({ users, deleteUser, editUser }) => {
     e.preventDefault();
     deleteUser(users.id);
   };
+
   return (
     <>
       <Modal show={show} onHide={handleClose} animation={false}>
