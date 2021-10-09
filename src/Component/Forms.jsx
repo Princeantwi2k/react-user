@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./User.css";
 import { AddAction, getALLusers } from "../Action/AddAction";
 import { connect } from "react-redux";
+import { logout } from "./AuthAction/Auth";
 
 class Forms extends Component {
   constructor(props) {
@@ -78,6 +79,8 @@ class Forms extends Component {
           <br />
           <button type="submit">Submit </button>
         </form>
+
+        <button onClick={this.props.logout}>logOut</button>
       </div>
     );
   }
@@ -86,5 +89,6 @@ class Forms extends Component {
 const mapDispatchToProps = {
   NewUSER: AddAction,
   getALLusers: getALLusers,
+  logout: logout,
 };
 export default connect(null, mapDispatchToProps)(Forms);
