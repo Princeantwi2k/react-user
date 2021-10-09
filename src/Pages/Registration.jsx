@@ -1,21 +1,20 @@
 import React from "react";
 import { registration } from "../Component/AuthAction/Auth";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+import { connect } from "react-redux";
+
 import { Link } from "react-router-dom";
 import "../Component/User.css";
 
-const Registration = () => {
-  const dispatch = useDispatch();
-  const { replace } = useHistory();
+const Registration = (props) => {
+  if (!props.auth.isLoaded) return null;
+  if (props.auth.uid) props.history.push("/");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let email = e.target.elements.email.value;
     let password = e.target.elements.password.value;
 
-    dispatch(registration(email, password, replace));
-    console.log(dispatch);
+    props.registration(email, password);
   };
   return (
     <div>
@@ -34,5 +33,10 @@ const Registration = () => {
     </div>
   );
 };
-
-export default Registration;
+const mapStateToProps = (state) => {
+  return { auth: state.firebase.auth };
+};
+const mapDispatchToProps = {
+  registration,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
