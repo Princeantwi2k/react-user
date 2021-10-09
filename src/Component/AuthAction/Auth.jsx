@@ -13,26 +13,32 @@ export const registration = (email, password) => {
   };
 };
 
-export const login = (email, password, replace) => {
+export const login = (email, password) => {
   return (dispatch, state, { getFirebase }) => {
     const firebase = getFirebase();
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((res) => {
-        replace("/");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 };
 
-export const logout = (replace) => {
+export const logout = () => {
   return (dispatch, state, { getFirebase }) => {
     const firebase = getFirebase();
     firebase
       .auth()
       .signOut()
-      .then(() => {
-        replace("/login");
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 };
