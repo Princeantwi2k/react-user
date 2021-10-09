@@ -33,9 +33,10 @@ const Login = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  auth: state.firebase.auth,
-});
+const mapStateToProps = (state) => {
+  return { auth: state.firebase.auth };
+};
+
 const mapDispatchToProps = {
   login,
 };
