@@ -9,7 +9,6 @@ const Router = () => {
   return (
     <BrowserRouter>
       <ProtectedRoute exact path="/" component={Appj} />
-      <Route path="/home" component={Appj} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Registration} />
     </BrowserRouter>
