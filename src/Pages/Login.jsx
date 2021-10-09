@@ -1,22 +1,20 @@
 import React from "react";
 import { login } from "../Component/AuthAction/Auth";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "../Component/User.css";
 
-const Login = () => {
-  const dispatch = useDispatch();
-  const { replace } = useHistory();
+const Login = (props) => {
+  if (!props.auth.isLoaded) return null;
+
+  if (props.auth.uid) props.history.push("/");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let email = e.target.elements.email.value;
     let password = e.target.elements.password.value;
 
-    dispatch(login(email, password, replace));
-    console.log(dispatch);
+    props.login(email, password);
   };
   return (
     <div>
@@ -36,7 +34,10 @@ const Login = () => {
   );
 };
 const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth,
+  auth: state.firebase.auth,
 });
+const mapDispatchToProps = {
+  login,
+};
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
